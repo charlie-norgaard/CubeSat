@@ -40,12 +40,14 @@ def check_crc(rec_message, rec_crc, pkt_id):
     if calc_crc == rec_crc:
         print('\nNo errors detected!')
         print('Command packet has been passed to OBC.')
+        return True
     else:
         print()
         print(f'NACK flag raised for Packet {pkt_id}!')
         print(f'Received CRC   = {rec_crc}')
         print(f'Calculated CRC = {calc_crc}')
         print(f'Packet {pkt_id} has been logged for a resend request.')
+        return False
 
 # NEEDS WORK
 def nack_protocol(pkt_id, nack_arr):
